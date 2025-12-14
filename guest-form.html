@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Guest - Car Park System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/guest-form.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <span class="material-symbols-outlined">local_parking</span>
+                <span>Car Park Manager</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="guest-form.html" class="active">Register Guest</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle">
+                <span class="material-symbols-outlined">dark_mode</span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="form-page">
+        <div class="container">
+            <div class="form-header">
+                <h1>Guest Registration</h1>
+                <p>Register a new guest and vehicle for car park access</p>
+            </div>
+
+            <div class="form-container">
+                <form id="guestForm" class="guest-form">
+                    <!-- Guest Information -->
+                    <div class="form-section">
+                        <h2>
+                            <span class="material-symbols-outlined">person</span>
+                            Guest Information
+                        </h2>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="guestName">Full Name *</label>
+                                <input type="text" id="guestName" name="name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="guestEmail">Email Address *</label>
+                                <input type="email" id="guestEmail" name="email" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="guestPhone">Phone Number</label>
+                                <input type="tel" id="guestPhone" name="phone">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="roomNumber">Room Number *</label>
+                                <input type="text" id="roomNumber" name="roomNumber" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vehicle Information -->
+                    <div class="form-section">
+                        <h2>
+                            <span class="material-symbols-outlined">directions_car</span>
+                            Vehicle Information
+                        </h2>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="vehicleReg">Vehicle Registration *</label>
+                                <input type="text" id="vehicleReg" name="vehicleReg" 
+                                       placeholder="e.g., ABC-1234" required 
+                                       style="text-transform: uppercase;">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="vehicleMake">Make & Model</label>
+                                <input type="text" id="vehicleMake" name="vehicleMake" 
+                                       placeholder="e.g., Toyota Camry">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="vehicleColor">Color</label>
+                                <input type="text" id="vehicleColor" name="vehicleColor">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="parkingSpot">Parking Spot</label>
+                                <input type="text" id="parkingSpot" name="parkingSpot" 
+                                       placeholder="e.g., A-12">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stay Information -->
+                    <div class="form-section">
+                        <h2>
+                            <span class="material-symbols-outlined">event</span>
+                            Stay Information
+                        </h2>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="checkIn">Check-in Date *</label>
+                                <input type="date" id="checkIn" name="checkIn" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="checkOut">Check-out Date *</label>
+                                <input type="date" id="checkOut" name="checkOut" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="notes">Additional Notes</label>
+                            <textarea id="notes" name="notes" rows="3" 
+                                      placeholder="Any special requirements or notes..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Email Preferences -->
+                    <div class="form-section">
+                        <h2>
+                            <span class="material-symbols-outlined">mail</span>
+                            Email Preferences
+                        </h2>
+                        
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="emailReminders" id="emailReminders" checked>
+                                <span>Send check-out reminders</span>
+                            </label>
+                            
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="emailUpdates" id="emailUpdates" checked>
+                                <span>Receive parking updates</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Form Actions -->
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="window.history.back()">
+                            <span class="material-symbols-outlined">cancel</span>
+                            Cancel
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <span class="material-symbols-outlined">save</span>
+                            Register Guest
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Success Message -->
+                <div class="success-message" id="successMessage" style="display: none;">
+                    <span class="material-symbols-outlined">check_circle</span>
+                    <h3>Guest Registered Successfully!</h3>
+                    <p id="successDetails"></p>
+                    <div class="success-actions">
+                        <button class="btn btn-secondary" onclick="document.getElementById('guestForm').reset(); document.getElementById('successMessage').style.display='none';">
+                            Register Another
+                        </button>
+                        <a href="dashboard.html" class="btn btn-primary">
+                            View Dashboard
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/storage.js"></script>
+    <script src="js/guest-form.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
